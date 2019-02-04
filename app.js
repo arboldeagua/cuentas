@@ -9,6 +9,8 @@ total_four = document.getElementById("total_four"),
 total_five = document.getElementById("total_five"),
 total_seven = document.getElementById('total_seven'),
 total_eight = document.getElementById('total_eight'),
+total_p = document.getElementById('total_p'),
+total_c = document.getElementById('total_C'),
 numero_noche = document.getElementById('numeronoches'),
 numero_almuerzo = document.getElementById('numeroalmuerzos'),
 numero_desayuno = document.getElementById('numerodesayunos'),
@@ -44,8 +46,9 @@ button_six = document.getElementById('button_six'),
 button_noche = document.getElementById("button_noche"),
 button_cena = document.getElementById('button_cena'),
 button_seven = document.getElementById('button_seven'),
-button_eight = document.getElementById('button_eight');
-
+button_eight = document.getElementById('button_eight'),
+button_totalp = document.getElementById('button_totalp'),
+button_totalc = document.getElementById('button_totalc');
 //botones para restar
 
 let rest_one = document.getElementById('rest_one'),
@@ -147,6 +150,7 @@ rest_eight.addEventListener('click', function(){
     total_eight.value = numero_camping * precio_camping;
 });
 
+//suma posada x persona
 button_six.addEventListener('click', function(){
     if(total_cena.value == 0){
         totalSuma.value = parseInt(total_three.value) + parseInt(total_four.value);
@@ -160,3 +164,30 @@ button_six.addEventListener('click', function(){
     }
 });
 
+//suma pasadia x persona
+button_totalp.addEventListener('click', function(){
+    if(total_five.value == 0){
+        total_p.value = parseInt(total_seven.value) + parseInt(total_four.value);
+    }else if(total_four.value == 0) {
+        total_p.value = parseInt(total_seven.value) + parseInt(total_five.value);
+    }else {
+        total_p.value = parseInt(total_seven.value) + parseInt(total_four.value) + parseInt(total_five.value);
+    }
+});
+
+// suma camping x persona
+button_totalc.addEventListener('click', function(){
+    if(total_four.value == 0){
+        total_c.value =  parseInt(total_eight.value) + parseInt(total_five.value);
+
+    }else  if(total_five.value == 0){ 
+        total_c.value = parseInt(total_eight.value) + parseInt(total_four.value);
+        
+    }else if (total_four.value == 0 && total_five.value == 0) {
+        total_c.value = parseInt(total_eight.value) + parseInt(total_cena.value);
+
+    }else{
+        total_c.value = parseInt(total_eight.value) + parseInt(total_cena.value) + parseInt(total_five.value) +
+        parseInt(total_four.value);
+    }
+})
